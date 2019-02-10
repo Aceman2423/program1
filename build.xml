@@ -1,0 +1,35 @@
+<project name="Program1
+	" default="dist" basedir=".">
+  
+  <property name="src" location=""/>
+  <property name="build" location=""/>
+  <property name="dist" location="dist"/>
+
+  <target name="init" depends="clean">
+
+    <tstamp/>
+
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+
+    <javac srcdir="${src}" destdir="${build}"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+
+    <mkdir dir="${dist}/lib"/>
+
+
+    <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up">
+
+    <delete dir="${dist}"/>
+  </target>
+</project>
